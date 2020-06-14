@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F9DC5C</color>
+    <color name="colorPrimaryDark">#B88630</color>
+    <color name="colorAccent">#763004</color>
+
+    <!--    my colors   -->
+    <color name="colorMainTheme">#F9DC5C</color>
+    <color name="colorMainDark">#B88630</color>
+    <color name="colorSmallSize">#64A5E3</color>
+    <color name="colorMediumSize">#3087D9</color>
+    <color name="colorLargeSize">#1C5D99</color>
+    <color name="colorSadMood">#FF5A5F</color>
+    <color name="colorNeutralMood">#F9F5B4</color>
+    <color name="colorFreshMood">#79EF6C</color>
+
+
+</resources>
