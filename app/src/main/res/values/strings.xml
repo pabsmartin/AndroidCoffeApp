@@ -10,6 +10,13 @@
     <string name="medium_size">Medium</string>
     <string name="small_size">Small</string>
     <string name="large_size">Large</string>
+    <string name="confirm">Confirm</string>
+    <string name="deny">Deny</string>
+    <string name="not_feeling_very_good_n_n">Not feeling very good \n\n:(</string>
+    <string name="just_another_day_n_n">Just another day \n\n:|</string>
+    <string name="i_m_feeling_great_n_n">I\'m feeling great \n\n:)</string>
+    <string name="i_m_ready">I\'M READY</string>
+    <string name="back">BACK</string>
 
     <!--  my strings  -->
 </resources>
