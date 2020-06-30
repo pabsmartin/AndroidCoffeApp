@@ -10,57 +10,58 @@
         android:id="@+id/txt_coffee_size_title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_weight="0.25"
         android:background="@color/colorMainTheme"
         android:fontFamily="sans-serif-black"
         android:padding="5dp"
-        android:text="@string/register_the_answers"
+        android:text="@string/do_you_want_to_register_more_coffees"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_back_from_confirm_deny"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279" />
-
-    <Button
-        android:id="@+id/btn_accept"
-        android:layout_width="88dp"
-        android:layout_height="59dp"
-        android:background="@drawable/happy_mood_btn_style"
-        android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
+        app:layout_constraintVertical_bias="0.302" />
 
     <Button
-        android:id="@+id/btn_deny"
+        android:id="@+id/btn_another_yes"
         android:layout_width="88dp"
         android:layout_height="59dp"
-        android:background="@drawable/sad_mood_btn_style"
-        android:text="@string/deny"
-        android:textColor="#000000"
+        android:background="@android:color/white"
+        android:text="@string/yes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_accept"
-        app:layout_constraintHorizontal_bias="0.572"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.739"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <Button
-        android:id="@+id/btn_back_from_confirm_deny"
+        android:id="@+id/btn_another_no"
+        android:layout_width="88dp"
+        android:layout_height="59dp"
+        android:background="@android:color/black"
+        android:text="@string/no"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_another_yes"
+        app:layout_constraintHorizontal_bias="0.677"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <Button
+        android:id="@+id/btn_back_from_another_no"
         android:layout_width="412dp"
         android:layout_height="68dp"
         android:background="@color/colorMainTest"
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_deny"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

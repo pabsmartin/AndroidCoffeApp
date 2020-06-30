@@ -11,7 +11,7 @@ import java.util.prefs.BackingStoreException;
 
 public class Mood extends AppCompatActivity {
 
-    Button happyMoodBtn, neutralMoodBtn, sadMoodBtn, backFromMood;
+    private Button happyMoodBtn, neutralMoodBtn, sadMoodBtn, backFromMood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

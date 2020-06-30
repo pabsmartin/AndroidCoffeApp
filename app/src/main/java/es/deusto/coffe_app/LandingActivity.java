@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class LandingActivity extends AppCompatActivity {
 
     private Button startBtn;
+    private ArrayList<Ticket> registeredCoffees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,10 @@ public class LandingActivity extends AppCompatActivity {
                         System.out.println("STARTING APP");
 
                         Intent coffeeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
+
+                        registeredCoffees = new ArrayList<Ticket>();
+                        coffeeActivityIntent.putExtra("RegisteredCoffees", registeredCoffees);
+
                         startActivity(coffeeActivityIntent);
                     }
                 }

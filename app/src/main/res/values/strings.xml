@@ -16,7 +16,20 @@
     <string name="just_another_day_n_n">Just another day \n\n:|</string>
     <string name="i_m_feeling_great_n_n">I\'m feeling great \n\n:)</string>
     <string name="i_m_ready">I\'M READY</string>
+    <string name="very_productive">Very productive!!</string>
+    <string name="not_very_productive">Not very productive...</string>
+    <string name="how_was_work_today">How was work today?</string>
+    <string name="what_size_of_cup">What size of cup did you have?</string>
+    <string name="how_are_you_feeling">How are you feeling?</string>
+    <string name="a_normal_day">A normal day</string>
     <string name="back">BACK</string>
+    <string name="do_you_want_to_register_more_coffees">Do you want to register more coffees?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="register_the_answers">Register the answers?</string>
+    <string name="overall_view">Overall view</string>
+    <string name="pick">Pick</string>
+    <string name="how_many_did_you_take_that_size">How many did you take that size?</string>
 
     <!--  my strings  -->
 </resources>

@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ConfirmDeny"></activity>
+        <activity android:name=".Amount"></activity>
+        <activity android:name=".OverallView" />
+        <activity android:name=".AnotherOne" />
+        <activity android:name=".ConfirmDeny" />
         <activity android:name=".Productivity" />
         <activity android:name=".Mood" />
         <activity android:name=".CoffeeSize" />
