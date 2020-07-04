@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class LandingActivity extends AppCompatActivity {
 
     private Button startBtn;
-    private ArrayList<Ticket> registeredCoffees;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +21,13 @@ public class LandingActivity extends AppCompatActivity {
 
         startBtn = findViewById(R.id.btn_start);
 
-        startBtn.setOnClickListener(
-                new View.OnClickListener() {
+        startBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        System.out.println("STARTING APP");
-
-                        Intent coffeeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
-
-                        registeredCoffees = new ArrayList<Ticket>();
-                        coffeeActivityIntent.putExtra("RegisteredCoffees", registeredCoffees);
-
-                        startActivity(coffeeActivityIntent);
-                    }
+                Intent coffeeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
+                startActivity(coffeeActivityIntent);
                 }
+            }
         );
     }
 }

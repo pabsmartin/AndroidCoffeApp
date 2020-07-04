@@ -2,15 +2,24 @@ package es.deusto.coffe_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Size;
 import android.view.View;
 import android.widget.Button;
 
-public class Productivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    Button veryBtn, normalBtn, littleBtn, backBtn;
+public class Productivity extends Activity {
+
+    private static final String TAG = Productivity.class.getName();
+
+    private Button veryBtn, normalBtn, littleBtn, backBtn;
+
+    private Ticket ticket;
+    private ArrayList<Coffee> coffees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +31,26 @@ public class Productivity extends AppCompatActivity {
         littleBtn = findViewById(R.id.btn_not_prod);
         backBtn = findViewById(R.id.btn_back_from_prod);
 
+        Intent intent = getIntent();
+        ticket = intent.getExtras().getParcelable("ticket");
+
+        Log.d(TAG,"productivity -- "+ticket.toString());
+
+        coffees = intent.getExtras().getParcelableArrayList("coffees");
+
+        Log.d(TAG,"productivity -- "+coffees);
+
+
         veryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent moodActivityIntent = new Intent(getApplicationContext(), Mood.class);
+
+                ticket.setProductivity(2);
+
+                moodActivityIntent.putExtra("ticket", ticket);
+                moodActivityIntent.putExtra("coffees", coffees);
+
                 startActivity(moodActivityIntent);
             }
         });
@@ -34,6 +59,12 @@ public class Productivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent moodActivityIntent = new Intent(getApplicationContext(), Mood.class);
+
+                ticket.setProductivity(1);
+
+                moodActivityIntent.putExtra("ticket", ticket);
+                moodActivityIntent.putExtra("coffees", coffees);
+
                 startActivity(moodActivityIntent);
             }
         });
@@ -42,6 +73,12 @@ public class Productivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent moodActivityIntent = new Intent(getApplicationContext(), Mood.class);
+
+                ticket.setProductivity(0);
+
+                moodActivityIntent.putExtra("ticket", ticket);
+                moodActivityIntent.putExtra("coffees", coffees);
+
                 startActivity(moodActivityIntent);
             }
         });
@@ -49,8 +86,12 @@ public class Productivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent sizeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
-                startActivity(sizeActivityIntent);
+                Intent anotherOneActivityIntent = new Intent(getApplicationContext(), AnotherOne.class);
+
+                anotherOneActivityIntent.putExtra("ticket", ticket);
+                anotherOneActivityIntent.putExtra("coffees", coffees);
+
+                startActivity(anotherOneActivityIntent);
             }
         });
     }

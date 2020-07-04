@@ -30,6 +30,11 @@
     <string name="overall_view">Overall view</string>
     <string name="pick">Pick</string>
     <string name="how_many_did_you_take_that_size">How many did you take that size?</string>
+    <string name="go_to_landing_activity">Go to landing activity</string>
+    <string name="go_to_overall_view">Go to overall view</string>
+
+
+
 
     <!--  my strings  -->
 </resources>

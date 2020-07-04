@@ -7,17 +7,16 @@ import java.util.ArrayList;
 
 public class TicketManager implements Parcelable {
 
-    private ArrayList<Ticket> coffeesRegistered;
+    private ArrayList<Ticket> tickets;
 
     public TicketManager()
     {
-        coffeesRegistered = new ArrayList<Ticket>();
+        tickets = new ArrayList<>();
     }
 
     protected TicketManager(Parcel in) {
         readFromParcel(in);
     }
-
 
     @Override
     public int describeContents() {
@@ -26,17 +25,17 @@ public class TicketManager implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeList(coffeesRegistered);
+        parcel.writeList(tickets);
     }
 
     private void readFromParcel(Parcel in) {
-        coffeesRegistered = in.readArrayList(TicketManager.class.getClassLoader());
+        tickets = in.readArrayList(TicketManager.class.getClassLoader());
     }
 
-    public ArrayList<Ticket> getCoffeesRegistered(){
-        return coffeesRegistered;
+    public ArrayList<Ticket> getTickets(){
+        return tickets;
     }
-    public void setCoffeesRegistered(ArrayList<Ticket> coffeesRegistered){ this.coffeesRegistered = coffeesRegistered;}
+    public void setTickets(ArrayList<Ticket> tickets){ this.tickets = tickets;}
 
     public static final Creator<TicketManager> CREATOR = new Creator<TicketManager>() {
         @Override

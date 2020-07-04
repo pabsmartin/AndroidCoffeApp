@@ -3,37 +3,92 @@ package es.deusto.coffe_app;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 
-public class Ticket {
+public class Ticket implements Parcelable {
 
-    private int mood;
-    private int prodLevel;
-    private int size;
-    private int amount;
+    private ArrayList<Coffee> coffees;
+    private int mood, productivity;
+    private Date registryDate;
 
     public Ticket() {
-        this.size = size;
-        this.amount = amount;
-        this.prodLevel = prodLevel;
+        coffees = new ArrayList<Coffee>();
+        mood = -1;
+        productivity = -1;
+        registryDate = new Date();
+    }
+
+    public Ticket(ArrayList<Coffee> coffees, int mood, int productivity){
+        this.coffees = coffees;
+        this.mood = mood;
+        this.productivity = productivity;
+        this.registryDate = new Date();
+    }
+
+    protected Ticket(Parcel in) {
+        mood = in.readInt();
+        productivity = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mood);
+        dest.writeInt(productivity);
+//        dest.writeParcelableArray((Parcelable[]) coffees.toArray(), 2);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Ticket> CREATOR = new Creator<Ticket>() {
+        @Override
+        public Ticket createFromParcel(Parcel in) {
+            return new Ticket(in);
+        }
+
+        @Override
+        public Ticket[] newArray(int size) {
+            return new Ticket[size];
+        }
+    };
+
+    public ArrayList<Coffee> getCoffees() {
+        return coffees;
+    }
+    public void setCoffees(ArrayList<Coffee> coffees) {
+        this.coffees = coffees;
+    }
+
+    public int getMood() {
+        return mood;
+    }
+    public void setMood(int mood) {
         this.mood = mood;
     }
 
-    public int getMood(){
-        return mood;
+    public int getProductivity() {
+        return productivity;
     }
-    public int getProdLevel(){
-        return prodLevel;
+    public void setProductivity(int productivity) {
+        this.productivity = productivity;
     }
-    public int getSize(){
-        return size;
-    }
-    public int getAmount(){
-        return amount;
-    }
-    public void setMood(int mood){ this.mood = mood;}
-    public void setAmount(int amount){ this.amount = amount;}
-    public void setSize(int size){ this.size= size;}
-    public void setProdLevel(int prodLevel){ this.prodLevel = prodLevel;}
 
+    public Date getRegistryDate() {
+        return registryDate;
+    }
+    public void setRegistryDate(Date registryDate) {
+        this.registryDate = registryDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "coffees=" + coffees +
+                ", mood=" + mood +
+                ", productivity=" + productivity +
+                '}';
+    }
 }
