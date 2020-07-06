@@ -23,8 +23,8 @@ public class CoffeeSize extends Activity {
     private Button largeCoffeeBtn, mediumCoffeeBtn, smallCoffeeBtn, backSizeBtn;
     private Intent startActivityIntent, amountActivityIntent, intent;
 
+    private ArrayList<Coffee> coffees;
     private Coffee coffee;
-    private Ticket ticket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +36,35 @@ public class CoffeeSize extends Activity {
         smallCoffeeBtn = findViewById(R.id.btn_small_size);
         backSizeBtn = findViewById(R.id.btn_back_from_size);
 
+        Intent i = getIntent();
+
+        Coffee auxCoffee = i.getParcelableExtra("coffee");
+        if(auxCoffee != null)
+            coffee = auxCoffee;
+        else
+            coffee = new Coffee();
+
+        Log.d(TAG, "coffee -> "+coffee);
+
+        ArrayList<Coffee> auxCoffees = i.getParcelableArrayListExtra("coffees");
+        Log.d(TAG, "AUXILIAR COFFEES -> "+auxCoffees);
+        if(auxCoffees != null)
+            coffees = auxCoffees;
+        else
+            coffees = new ArrayList<>();
+
+        Log.d(TAG, "coffees --> "+coffees);
+
         smallCoffeeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 amountActivityIntent = new Intent(getApplicationContext(), Amount.class);
 
-                /*                    TAMANYO DEL CAFE                 */
                 coffee.setSize(smallCoffee);
-                Log.d(TAG, "ON CLICK: "+coffee.toString());
 
-                /*                    METER EL TICKET                 */
-                ticket.getCoffees().add(coffee);
-                Log.d(TAG, "ON CLICK: "+ticket.toString());
-
-                amountActivityIntent.putExtra("ticket", ticket);
-                amountActivityIntent.putExtra("coffees", ticket.getCoffees());
+                coffees.add(coffee);
+                amountActivityIntent.putExtra("coffees", coffees);
+                Log.d(TAG, "coffees after size pick -- "+coffees);
 
                 startActivity(amountActivityIntent);
             }
@@ -61,16 +75,11 @@ public class CoffeeSize extends Activity {
             public void onClick(View view) {
                 amountActivityIntent = new Intent(getApplicationContext(), Amount.class);
 
-                /*                    TAMANYO DEL CAFE                 */
                 coffee.setSize(mediumCoffee);
-                Log.d(TAG, "ON CLICK: "+coffee.toString());
 
-                /*                    METER EL TICKET                 */
-                ticket.getCoffees().add(coffee);
-                Log.d(TAG, "ON CLICK: "+ticket.toString());
-
-                amountActivityIntent.putExtra("ticket", ticket);
-                amountActivityIntent.putExtra("coffees", ticket.getCoffees());
+                coffees.add(coffee);
+                amountActivityIntent.putExtra("coffees", coffees);
+                Log.d(TAG, "coffees after size pick -- "+coffees);
 
                 startActivity(amountActivityIntent);
             }
@@ -81,16 +90,11 @@ public class CoffeeSize extends Activity {
             public void onClick(View view) {
                 amountActivityIntent = new Intent(getApplicationContext(), Amount.class);
 
-                /*                    TAMANYO DEL CAFE                 */
                 coffee.setSize(largeCoffee);
-                Log.d(TAG,"ON CLICK: "+coffee.toString());
 
-                /*                    METER EL TICKET                 */
-                ticket.getCoffees().add(coffee);
-                Log.d(TAG,"ON CLICK: "+ticket.toString());
-
-                amountActivityIntent.putExtra("ticket", ticket);
-                amountActivityIntent.putExtra("coffees", ticket.getCoffees());
+                coffees.add(coffee);
+                amountActivityIntent.putExtra("coffees", coffees);
+                Log.d(TAG, "coffees after size pick -- "+coffees);
 
                 startActivity(amountActivityIntent);
             }
@@ -106,33 +110,5 @@ public class CoffeeSize extends Activity {
                 startActivity(startActivityIntent);
             }
         });
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG,"ON START");
-
-        intent = getIntent();
-        Ticket intentTicket = intent.getParcelableExtra("ticket");
-        if(intentTicket != null)
-            ticket = intentTicket;
-        else
-            ticket = new Ticket();
-
-        Log.d(TAG,"size -- "+ticket.toString());
-
-        ArrayList<Coffee> intentCoffees = intent.getParcelableArrayListExtra("coffees");
-        if(intentCoffees != null)
-            ticket.setCoffees(intentCoffees);
-        else
-            ticket.setCoffees(new ArrayList<Coffee>()) ;
-
-        Log.d(TAG,"size -- "+ticket.getCoffees());
-
-        coffee = new Coffee();
-        Log.d(TAG,"size -- "+coffee.toString());
-
     }
 }

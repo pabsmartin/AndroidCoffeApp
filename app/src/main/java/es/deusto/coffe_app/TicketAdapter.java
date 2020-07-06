@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.textclassifier.TextClassifierEvent;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,19 +14,30 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Locale;
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHolder> {
 
     private static final String TAG = TicketAdapter.class.getName();
 
     private ArrayList<Ticket> mTickets;
-    private Context context;
+    private ArrayList<Coffee> mCoffees;
 
-    public TicketAdapter(ArrayList<Ticket> mTickets, Context context) {
+    private Context context;
+    private DateFormat dateFormat;
+
+    private int smallCoffees, mediumCoffees, largeCoffees;
+
+    public TicketAdapter(ArrayList<Ticket> mTickets, ArrayList<Coffee> mCoffees, Context context) {
+        Log.d(TAG, "TicketAdapter: tickets ->"+mTickets);
         this.mTickets = mTickets;
+        this.mCoffees = mCoffees;
         this.context = context;
+        dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.FRANCE);
     }
 
     @NonNull
@@ -37,24 +50,49 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
 
     @Override
     public void onBindViewHolder(@NonNull TicketHolder holder, final int position) {
-//        holder.ticketTitle.setText(mTickets.get(position).getRegistryDate().toString());
-        int mood= -1;
+        Ticket ticket = mTickets.get(position);
 
-        holder.ticketTitle.setText(mTickets.get(position).getRegistryDate().toString());
+        try {
 
-        mood = mTickets.get(position).getMood();
+            holder.ticketTitle.setText(dateFormat.format(ticket.getRegistryDate()));
+        } catch (Exception e) {
+            holder.ticketTitle.setText("null");
+        }
+
+        int mood = ticket.getMood();
+        int tId = ticket.getId();
+
+        smallCoffees = 0;
+        mediumCoffees = smallCoffees;
+        largeCoffees = smallCoffees;
+
+        for(Coffee c : mCoffees){
+            if(c.getTicketId() == tId){
+                int size = c.getSize();
+                if(size == 0)
+                    smallCoffees += c.getAmount();
+                else if(size == 1)
+                    mediumCoffees += c.getAmount();
+                else if(size == 2){
+                    largeCoffees += c.getAmount();
+                }
+            }
+        }
+
+        holder.numberOfCoffees.setText("S: "+smallCoffees+" M: "+mediumCoffees+" L: "+largeCoffees);
+
         switch(mood){
             case 0:
-                holder.itemView.setBackgroundResource(R.drawable.sad_mood_btn_style);
+                holder.imageView.setBackgroundResource(R.drawable.sad_mood_btn_style);
                 break;
             case 1:
-                holder.itemView.setBackgroundResource(R.drawable.neutral_mood_btn_style);
+                holder.imageView.setBackgroundResource(R.drawable.neutral_mood_btn_style);
                 break;
             case 2:
-                holder.itemView.setBackgroundResource(R.drawable.happy_mood_btn_style);
+                holder.imageView.setBackgroundResource(R.drawable.happy_mood_btn_style);
                 break;
             default:
-                holder.itemView.setBackgroundResource(R.drawable.welcome_text_style);
+                holder.imageView.setBackgroundResource(R.drawable.welcome_text_style);
                 break;
         }
 
@@ -71,17 +109,23 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
 
     @Override
     public int getItemCount() {
+        Log.d(TAG, "getItemCount: mTickets -> "+mTickets);
         return mTickets.size();
+//        return 0;
     }
 
     public class TicketHolder extends RecyclerView.ViewHolder{
 
         TextView ticketTitle;
+        TextView numberOfCoffees;
+        ImageView imageView;
         RelativeLayout parentLayout;
         public TicketHolder(@NonNull View itemView) {
             super(itemView);
 
+            numberOfCoffees = itemView.findViewById(R.id.coffee_number);
             ticketTitle = itemView.findViewById(R.id.ticket_title);
+            imageView = itemView.findViewById(R.id.mood_image);
             parentLayout = itemView.findViewById(R.id.item_layout);
         }
     }

@@ -1,5 +1,6 @@
 package es.deusto.coffe_app;
 
+import androidx.annotation.LongDef;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -17,7 +18,6 @@ public class AnotherOne extends Activity {
 
     private Button yesBtn, noBtn, backBtn;
 
-    private Ticket ticket;
     private ArrayList<Coffee> coffees;
 
     @Override
@@ -30,13 +30,9 @@ public class AnotherOne extends Activity {
         backBtn = findViewById(R.id.btn_back_from_another_no);
 
         Intent intent = getIntent();
-        ticket = intent.getExtras().getParcelable("ticket");
-
-        Log.d(TAG,"amount -- "+ticket.toString());
 
         coffees = intent.getExtras().getParcelableArrayList("coffees");
-
-        Log.d(TAG,"amount -- "+coffees);
+        Log.d(TAG,"anotherOne coffees -- "+coffees);
 
 
         yesBtn.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +41,6 @@ public class AnotherOne extends Activity {
 
                 Intent sizeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
 
-                sizeActivityIntent.putExtra("ticket", ticket);
                 sizeActivityIntent.putExtra("coffees", coffees);
 
                 startActivity(sizeActivityIntent);
@@ -58,9 +53,7 @@ public class AnotherOne extends Activity {
 
                 Intent productivityActivityIntent = new Intent(getApplicationContext(), Productivity.class);
 
-                productivityActivityIntent.putExtra("ticket", ticket);
                 productivityActivityIntent.putExtra("coffees", coffees);
-
 
                 startActivity(productivityActivityIntent);
             }
@@ -71,7 +64,6 @@ public class AnotherOne extends Activity {
            public void onClick(View view) {
                Intent amountActivityIntent = new Intent(getApplicationContext(), Amount.class);
 
-               amountActivityIntent.putExtra("ticket", ticket);
                amountActivityIntent.putExtra("coffees", coffees);
 
                startActivity(amountActivityIntent);

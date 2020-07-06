@@ -21,6 +21,7 @@ public class Mood extends Activity {
 
     private Ticket ticket;
     private ArrayList<Coffee> coffees;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +33,12 @@ public class Mood extends Activity {
         backFromMood = findViewById(R.id.btn_back_from_mood);
 
         Intent intent = getIntent();
-        ticket = intent.getExtras().getParcelable("ticket");
 
-        Log.d(TAG,"amount -- "+ticket.toString());
+        ticket = intent.getExtras().getParcelable("ticket");
+        Log.d(TAG,"ticket -- "+ticket.toString());
 
         coffees = intent.getExtras().getParcelableArrayList("coffees");
-
-        Log.d(TAG,"amount -- "+coffees);
+        Log.d(TAG,"coffees -- "+coffees);
 
         happyMoodBtn.setOnClickListener(new View.OnClickListener() {
             @Override

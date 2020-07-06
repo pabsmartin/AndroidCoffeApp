@@ -7,13 +7,18 @@ import java.io.Serializable;
 
 public class Coffee implements Parcelable{
 
-    private int size;
-    private int amount;
+    private int size, amount, ticketId;
 
     public Coffee() {
+        this.size = -1;
+        this.amount = -1;
+        this.ticketId = -1;
+    }
+
+    public Coffee(int size, int amount, int ticketId){
         this.size = size;
         this.amount = amount;
-
+        this.ticketId = ticketId;
     }
 
     protected Coffee(Parcel in) {
@@ -41,6 +46,12 @@ public class Coffee implements Parcelable{
     }
     public void setAmount(int amount){ this.amount = amount;}
     public void setSize(int size){ this.size= size;}
+    public int getTicketId() {
+        return ticketId;
+    }
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
+    }
 
     @Override
     public int describeContents() {
@@ -54,6 +65,6 @@ public class Coffee implements Parcelable{
     }
 
     public String toString(){
-        return "-- Coffee:: size:"+ size +", amount:"+ amount;
+        return "coffee :: size:"+ size +", amount:"+ amount+", ticketId:"+ ticketId;
     }
 }

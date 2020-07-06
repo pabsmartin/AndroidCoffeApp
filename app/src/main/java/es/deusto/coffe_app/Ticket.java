@@ -9,7 +9,7 @@ import java.util.Date;
 public class Ticket implements Parcelable {
 
     private ArrayList<Coffee> coffees;
-    private int mood, productivity;
+    private int mood, productivity, id;
     private Date registryDate;
 
     public Ticket() {
@@ -17,13 +17,16 @@ public class Ticket implements Parcelable {
         mood = -1;
         productivity = -1;
         registryDate = new Date();
+        id = -1;
     }
 
-    public Ticket(ArrayList<Coffee> coffees, int mood, int productivity){
+    public Ticket(ArrayList<Coffee> coffees, int mood, int productivity, Date registryDate, int id ){
         this.coffees = coffees;
         this.mood = mood;
         this.productivity = productivity;
-        this.registryDate = new Date();
+        this.registryDate = registryDate;
+        this.id = id;
+
     }
 
     protected Ticket(Parcel in) {
@@ -83,12 +86,17 @@ public class Ticket implements Parcelable {
         this.registryDate = registryDate;
     }
 
+    public int getId(){ return id; }
+    public void setId (int id ) { this.id = id; }
+
     @Override
     public String toString() {
         return "Ticket{" +
                 "coffees=" + coffees +
                 ", mood=" + mood +
                 ", productivity=" + productivity +
+                ", registryDate=" + registryDate +
+                ", id=" + id +
                 '}';
     }
 }

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Amount extends Activity implements NumberPicker.OnValueChangeListener {
 
@@ -18,7 +19,6 @@ public class Amount extends Activity implements NumberPicker.OnValueChangeListen
     private NumberPicker numberPicker;
     private Button pickBtn, backBtn;
 
-    private Ticket ticket;
     private ArrayList<Coffee> coffees;
 
     @Override
@@ -30,23 +30,21 @@ public class Amount extends Activity implements NumberPicker.OnValueChangeListen
         pickBtn = findViewById(R.id.btn_pick_amount);
         backBtn = findViewById(R.id.btn_back_from_amount);
 
-        numberPicker.setMinValue(0);
+        numberPicker.setMinValue(1);
         numberPicker.setMaxValue(10);
 
         Intent intent = getIntent();
-        ticket = intent.getExtras().getParcelable("ticket");
 
-        Log.d(TAG,"amount -- "+ticket.toString());
-
-        coffees = intent.getExtras().getParcelableArrayList("coffees");
-//        coffees = ticket.getCoffees();
-
-        Log.d(TAG,"amount -- "+coffees);
+        coffees = intent.getParcelableArrayListExtra("coffees");
+        Log.d(TAG,"coffees --> "+coffees);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent sizeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
+
+                sizeActivityIntent.putExtra("coffees", coffees);
+                Log.d(TAG, "sending back coffees --> "+coffees);
 
                 startActivity(sizeActivityIntent);
             }
@@ -58,9 +56,9 @@ public class Amount extends Activity implements NumberPicker.OnValueChangeListen
                 Intent anotherOneActivityIntent = new Intent(getApplicationContext(), AnotherOne.class);
 
                 coffees.get(coffees.size()-1).setAmount(numberPicker.getValue());
-
-                anotherOneActivityIntent.putExtra("ticket", ticket);
                 anotherOneActivityIntent.putExtra("coffees", coffees);
+
+                Log.d(TAG, "coffees --> "+coffees);
 
                 startActivity(anotherOneActivityIntent);
             }

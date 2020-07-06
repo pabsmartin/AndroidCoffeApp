@@ -32,9 +32,10 @@
     <string name="how_many_did_you_take_that_size">How many did you take that size?</string>
     <string name="go_to_landing_activity">Go to landing activity</string>
     <string name="go_to_overall_view">Go to overall view</string>
+    <string name="notification_title">CoffeeApp</string>
+    <string name="notification_greeting_msg">Thank you for registering your daily coffees!</string>
 
 
 
 
-    <!--  my strings  -->
 </resources>

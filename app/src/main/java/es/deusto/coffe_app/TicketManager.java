@@ -11,7 +11,7 @@ public class TicketManager implements Parcelable {
 
     public TicketManager()
     {
-        tickets = new ArrayList<>();
+        tickets = new ArrayList<Ticket>();
     }
 
     protected TicketManager(Parcel in) {

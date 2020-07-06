@@ -32,13 +32,17 @@ public class Productivity extends Activity {
         backBtn = findViewById(R.id.btn_back_from_prod);
 
         Intent intent = getIntent();
-        ticket = intent.getExtras().getParcelable("ticket");
 
-        Log.d(TAG,"productivity -- "+ticket.toString());
+        Ticket auxTicket = intent.getExtras().getParcelable("ticket");
+        if(auxTicket != null )
+            ticket = auxTicket;
+        else
+            ticket = new Ticket();
+
+        Log.d(TAG,"ticket -- "+ticket.toString());
 
         coffees = intent.getExtras().getParcelableArrayList("coffees");
-
-        Log.d(TAG,"productivity -- "+coffees);
+        Log.d(TAG,"coffees -- "+coffees);
 
 
         veryBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +92,6 @@ public class Productivity extends Activity {
             public void onClick(View view) {
                 Intent anotherOneActivityIntent = new Intent(getApplicationContext(), AnotherOne.class);
 
-                anotherOneActivityIntent.putExtra("ticket", ticket);
                 anotherOneActivityIntent.putExtra("coffees", coffees);
 
                 startActivity(anotherOneActivityIntent);
