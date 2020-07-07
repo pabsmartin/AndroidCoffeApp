@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="es.deusto.coffe_app.OverallView"
+    tools:context="es.deusto.coffe_app.activities.OverallViewActivity"
     tools:showIn="@layout/activity_overall_view">
 
     <androidx.recyclerview.widget.RecyclerView

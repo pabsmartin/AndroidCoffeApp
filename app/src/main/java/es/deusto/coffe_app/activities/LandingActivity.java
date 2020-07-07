@@ -1,4 +1,4 @@
-package es.deusto.coffe_app;
+package es.deusto.coffe_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
+import es.deusto.coffe_app.R;
 
 public class LandingActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class LandingActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                Intent coffeeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
+                Intent coffeeActivityIntent = new Intent(getApplicationContext(), CoffeeSizeActivity.class);
                 startActivity(coffeeActivityIntent);
                 }
             }

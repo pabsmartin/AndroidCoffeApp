@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.textclassifier.TextClassifierEvent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,11 +13,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+
+import es.deusto.coffe_app.objects.Coffee;
+import es.deusto.coffe_app.objects.Ticket;
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHolder> {
 

@@ -1,7 +1,6 @@
-package es.deusto.coffe_app;
+package es.deusto.coffe_app.activities;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -9,7 +8,6 @@ import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -22,10 +20,16 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import es.deusto.coffe_app.R;
+import es.deusto.coffe_app.SQLiteCoffeeHelper;
+import es.deusto.coffe_app.SQLiteTicketHelper;
+import es.deusto.coffe_app.objects.Coffee;
+import es.deusto.coffe_app.objects.Ticket;
 
-public class ConfirmDeny extends Activity {
 
-    private static final String TAG = ConfirmDeny.class.getName();
+public class ConfirmDenyActivity extends Activity {
+
+    private static final String TAG = ConfirmDenyActivity.class.getName();
 //
     private static final String ACTION_UPDATE_NOTIFICATION = "es.deusto.coffe_app.ACTION_UPDATE_NOTIFICATION";
     private static final String PRIMARY_CHANNEL = "primary_notification_channel";
@@ -83,11 +87,11 @@ public class ConfirmDeny extends Activity {
                 createNotificationChannel();
 //                sendNotification();
 
-                Intent intent = new Intent(getApplicationContext(), OverallView.class);
+                Intent intent = new Intent(getApplicationContext(), OverallViewActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                PendingIntent pendingIntent = PendingIntent.getActivity(ConfirmDeny.this, 0, intent, 0);
+                PendingIntent pendingIntent = PendingIntent.getActivity(ConfirmDenyActivity.this, 0, intent, 0);
 
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(ConfirmDeny.this, "0")
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(ConfirmDenyActivity.this, "0")
                         .setSmallIcon(R.drawable.ic_baseline_emoji_food_beverage_24)
                         .setContentTitle(getString(R.string.notification_title))
                         .setContentText(getString(R.string.notification_greeting_msg))
@@ -95,13 +99,13 @@ public class ConfirmDeny extends Activity {
                         .setContentIntent(pendingIntent)
                         .setAutoCancel(true);
 
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(ConfirmDeny.this);
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(ConfirmDenyActivity.this);
 
                 // notificationId is a unique int for each notification that you must define
                 notificationManager.notify(0, builder.build());
 
                 // no es necesario añadir extras porque se recuperan en la siguiente actividad a través del acceso a bd
-                Intent overallActivityIntent = new Intent(getApplicationContext(), OverallView.class);
+                Intent overallActivityIntent = new Intent(getApplicationContext(), OverallViewActivity.class);
                 startActivity(overallActivityIntent);
 
             }
@@ -112,7 +116,7 @@ public class ConfirmDeny extends Activity {
             public void onClick(View view) {
                 Log.d(TAG, "DENIED");
 
-                new AlertDialog.Builder(ConfirmDeny.this)
+                new AlertDialog.Builder(ConfirmDenyActivity.this)
                         .setTitle("Are you sure?")
                         .setMessage("Are you sure you want to cancel this registry?")
 
@@ -120,7 +124,7 @@ public class ConfirmDeny extends Activity {
 
                             // CANCELA GUARDAR
                             public void onClick(DialogInterface dialog, int which) {
-                                new AlertDialog.Builder(ConfirmDeny.this)
+                                new AlertDialog.Builder(ConfirmDenyActivity.this)
                                         .setTitle("Now what?")
                                         .setMessage("What do you want to do next?")
 
@@ -134,7 +138,7 @@ public class ConfirmDeny extends Activity {
                                         // a overall view
                                         .setNegativeButton(R.string.go_to_overall_view, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
-                                                Intent overallActivityIntent = new Intent(getApplicationContext(), OverallView.class);
+                                                Intent overallActivityIntent = new Intent(getApplicationContext(), OverallViewActivity.class);
 
                                                 overallActivityIntent.putExtra("ticket", ticket);
                                                 overallActivityIntent.putExtra("coffees", coffees);
@@ -159,7 +163,7 @@ public class ConfirmDeny extends Activity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent moodActivityIntent = new Intent(getApplicationContext(), AnotherOne.class);
+                Intent moodActivityIntent = new Intent(getApplicationContext(), AnotherOneActivity.class);
                 startActivity(moodActivityIntent);
 
             }

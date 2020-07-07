@@ -1,4 +1,4 @@
-package es.deusto.coffe_app;
+package es.deusto.coffe_app.objects;
 
 import android.os.Parcel;
 import android.os.Parcelable;

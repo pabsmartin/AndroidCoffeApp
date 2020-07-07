@@ -1,20 +1,21 @@
-package es.deusto.coffe_app;
-
-import androidx.appcompat.app.AppCompatActivity;
+package es.deusto.coffe_app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Size;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class Productivity extends Activity {
+import es.deusto.coffe_app.R;
+import es.deusto.coffe_app.objects.Coffee;
+import es.deusto.coffe_app.objects.Ticket;
 
-    private static final String TAG = Productivity.class.getName();
+public class ProductivityActivity extends Activity {
+
+    private static final String TAG = ProductivityActivity.class.getName();
 
     private Button veryBtn, normalBtn, littleBtn, backBtn;
 
@@ -48,7 +49,7 @@ public class Productivity extends Activity {
         veryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent moodActivityIntent = new Intent(getApplicationContext(), Mood.class);
+                Intent moodActivityIntent = new Intent(getApplicationContext(), MoodActivity.class);
 
                 ticket.setProductivity(2);
 
@@ -62,7 +63,7 @@ public class Productivity extends Activity {
         normalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent moodActivityIntent = new Intent(getApplicationContext(), Mood.class);
+                Intent moodActivityIntent = new Intent(getApplicationContext(), MoodActivity.class);
 
                 ticket.setProductivity(1);
 
@@ -76,7 +77,7 @@ public class Productivity extends Activity {
         littleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent moodActivityIntent = new Intent(getApplicationContext(), Mood.class);
+                Intent moodActivityIntent = new Intent(getApplicationContext(), MoodActivity.class);
 
                 ticket.setProductivity(0);
 
@@ -90,7 +91,7 @@ public class Productivity extends Activity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent anotherOneActivityIntent = new Intent(getApplicationContext(), AnotherOne.class);
+                Intent anotherOneActivityIntent = new Intent(getApplicationContext(), AnotherOneActivity.class);
 
                 anotherOneActivityIntent.putExtra("coffees", coffees);
 

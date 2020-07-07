@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+
+import es.deusto.coffe_app.objects.Coffee;
+import es.deusto.coffe_app.objects.Ticket;
 
 public class SQLiteTicketHelper extends SQLiteOpenHelper{
 

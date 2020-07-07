@@ -1,4 +1,4 @@
-package es.deusto.coffe_app;
+package es.deusto.coffe_app.activities;
 
 
 import android.app.Activity;
@@ -10,11 +10,13 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class Amount extends Activity implements NumberPicker.OnValueChangeListener {
+import es.deusto.coffe_app.R;
+import es.deusto.coffe_app.objects.Coffee;
 
-    private static final String TAG = Amount.class.getName();
+public class AmountActivity extends Activity implements NumberPicker.OnValueChangeListener {
+
+    private static final String TAG = AmountActivity.class.getName();
 
     private NumberPicker numberPicker;
     private Button pickBtn, backBtn;
@@ -41,7 +43,7 @@ public class Amount extends Activity implements NumberPicker.OnValueChangeListen
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent sizeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
+                Intent sizeActivityIntent = new Intent(getApplicationContext(), CoffeeSizeActivity.class);
 
                 sizeActivityIntent.putExtra("coffees", coffees);
                 Log.d(TAG, "sending back coffees --> "+coffees);
@@ -53,7 +55,7 @@ public class Amount extends Activity implements NumberPicker.OnValueChangeListen
         pickBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent anotherOneActivityIntent = new Intent(getApplicationContext(), AnotherOne.class);
+                Intent anotherOneActivityIntent = new Intent(getApplicationContext(), AnotherOneActivity.class);
 
                 coffees.get(coffees.size()-1).setAmount(numberPicker.getValue());
                 anotherOneActivityIntent.putExtra("coffees", coffees);

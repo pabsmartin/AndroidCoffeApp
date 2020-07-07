@@ -1,6 +1,4 @@
-package es.deusto.coffe_app;
-
-import androidx.appcompat.app.AppCompatActivity;
+package es.deusto.coffe_app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,12 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class CoffeeSize extends Activity {
+import es.deusto.coffe_app.R;
+import es.deusto.coffe_app.objects.Coffee;
 
-    public static final String TAG = CoffeeSize.class.getName();
+public class CoffeeSizeActivity extends Activity {
+
+    public static final String TAG = CoffeeSizeActivity.class.getName();
 
     private final int smallCoffee = 0;
     private final int mediumCoffee = 1;
@@ -58,7 +58,7 @@ public class CoffeeSize extends Activity {
         smallCoffeeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                amountActivityIntent = new Intent(getApplicationContext(), Amount.class);
+                amountActivityIntent = new Intent(getApplicationContext(), AmountActivity.class);
 
                 coffee.setSize(smallCoffee);
 
@@ -73,7 +73,7 @@ public class CoffeeSize extends Activity {
         mediumCoffeeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                amountActivityIntent = new Intent(getApplicationContext(), Amount.class);
+                amountActivityIntent = new Intent(getApplicationContext(), AmountActivity.class);
 
                 coffee.setSize(mediumCoffee);
 
@@ -88,7 +88,7 @@ public class CoffeeSize extends Activity {
         largeCoffeeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                amountActivityIntent = new Intent(getApplicationContext(), Amount.class);
+                amountActivityIntent = new Intent(getApplicationContext(), AmountActivity.class);
 
                 coffee.setSize(largeCoffee);
 

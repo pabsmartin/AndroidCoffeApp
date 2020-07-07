@@ -10,6 +10,8 @@ import android.util.Log;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import es.deusto.coffe_app.objects.Coffee;
+
 public class SQLiteCoffeeHelper extends SQLiteOpenHelper{
 
     // Database name and version

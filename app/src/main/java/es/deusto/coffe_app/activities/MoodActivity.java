@@ -1,6 +1,4 @@
-package es.deusto.coffe_app;
-
-import androidx.appcompat.app.AppCompatActivity;
+package es.deusto.coffe_app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,13 +7,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.prefs.BackingStoreException;
 
-public class Mood extends Activity {
+import es.deusto.coffe_app.R;
+import es.deusto.coffe_app.objects.Coffee;
+import es.deusto.coffe_app.objects.Ticket;
 
-    private static final String TAG = Mood.class.getName();
+public class MoodActivity extends Activity {
+
+    private static final String TAG = MoodActivity.class.getName();
 
     private Button happyMoodBtn, neutralMoodBtn, sadMoodBtn, backFromMood;
 
@@ -43,7 +43,7 @@ public class Mood extends Activity {
         happyMoodBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent confirmDenyActivityIntent = new Intent(getApplicationContext(), ConfirmDeny.class);
+                Intent confirmDenyActivityIntent = new Intent(getApplicationContext(), ConfirmDenyActivity.class);
 
                 ticket.setMood(2);
 
@@ -57,7 +57,7 @@ public class Mood extends Activity {
         neutralMoodBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent confirmDenyActivityIntent = new Intent(getApplicationContext(), ConfirmDeny.class);
+                Intent confirmDenyActivityIntent = new Intent(getApplicationContext(), ConfirmDenyActivity.class);
 
                 ticket.setMood(1);
 
@@ -71,7 +71,7 @@ public class Mood extends Activity {
         sadMoodBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent confirmDenyActivityIntent = new Intent(getApplicationContext(), ConfirmDeny.class);
+                Intent confirmDenyActivityIntent = new Intent(getApplicationContext(), ConfirmDenyActivity.class);
 
                 ticket.setMood(0);
 
@@ -85,7 +85,7 @@ public class Mood extends Activity {
         backFromMood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent productivityActivityIntent = new Intent(getApplicationContext(), Productivity.class);
+                Intent productivityActivityIntent = new Intent(getApplicationContext(), ProductivityActivity.class);
 
                 ticket.setMood(2);
 

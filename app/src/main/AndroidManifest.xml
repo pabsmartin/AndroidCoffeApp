@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Amount"/>
-        <activity android:name=".OverallView" />
-        <activity android:name=".AnotherOne" />
-        <activity android:name=".ConfirmDeny" />
-        <activity android:name=".Productivity" />
-        <activity android:name=".Mood" />
-        <activity android:name=".CoffeeSize" />
+        <activity android:name=".activities.AmountActivity"/>
+        <activity android:name=".activities.OverallViewActivity" />
+        <activity android:name=".activities.AnotherOneActivity" />
+        <activity android:name=".activities.ConfirmDenyActivity" />
+        <activity android:name=".activities.ProductivityActivity" />
+        <activity android:name=".activities.MoodActivity" />
+        <activity android:name=".activities.CoffeeSizeActivity" />
         <activity
-            android:name=".LandingActivity"
+            android:name=".activities.LandingActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

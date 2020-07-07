@@ -1,7 +1,4 @@
-package es.deusto.coffe_app;
-
-import androidx.annotation.LongDef;
-import androidx.appcompat.app.AppCompatActivity;
+package es.deusto.coffe_app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,9 +9,12 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class AnotherOne extends Activity {
+import es.deusto.coffe_app.R;
+import es.deusto.coffe_app.objects.Coffee;
 
-    private static final String TAG = AnotherOne.class.getName();
+public class AnotherOneActivity extends Activity {
+
+    private static final String TAG = AnotherOneActivity.class.getName();
 
     private Button yesBtn, noBtn, backBtn;
 
@@ -39,7 +39,7 @@ public class AnotherOne extends Activity {
             @Override
             public void onClick(View view) {
 
-                Intent sizeActivityIntent = new Intent(getApplicationContext(), CoffeeSize.class);
+                Intent sizeActivityIntent = new Intent(getApplicationContext(), CoffeeSizeActivity.class);
 
                 sizeActivityIntent.putExtra("coffees", coffees);
 
@@ -51,7 +51,7 @@ public class AnotherOne extends Activity {
             @Override
             public void onClick(View view) {
 
-                Intent productivityActivityIntent = new Intent(getApplicationContext(), Productivity.class);
+                Intent productivityActivityIntent = new Intent(getApplicationContext(), ProductivityActivity.class);
 
                 productivityActivityIntent.putExtra("coffees", coffees);
 
@@ -62,7 +62,7 @@ public class AnotherOne extends Activity {
         backBtn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               Intent amountActivityIntent = new Intent(getApplicationContext(), Amount.class);
+               Intent amountActivityIntent = new Intent(getApplicationContext(), AmountActivity.class);
 
                amountActivityIntent.putExtra("coffees", coffees);
 
